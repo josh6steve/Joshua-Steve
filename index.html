@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Joshua Steve | Audio Engineer</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --bg:#0d0f15;
+  --card:#161a25;
+  --accent:#00e0b8;
+  --text:#f5f7fa;
+  --muted:#8d93a8;
+}
+
+*{margin:0;padding:0;box-sizing:border-box;}
+body{
+  font-family:Inter,sans-serif;
+  background:var(--bg);
+  color:var(--text);
+  line-height:1.6;
+}
+
+/* NAV */
+nav{
+  position:fixed;
+  width:100%;
+  padding:20px 50px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  background:rgba(13,15,21,.85);
+  backdrop-filter:blur(12px);
+  z-index:1000;
+}
+
+.logo{
+  font-weight:700;
+  color:var(--accent);
+  letter-spacing:1px;
+}
+
+nav a{
+  text-decoration:none;
+  color:var(--text);
+  margin-left:30px;
+  font-size:.9rem;
+  transition:.3s;
+}
+nav a:hover{color:var(--accent);}
+
+/* HERO */
+.hero{
+  min-height:100vh;
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  align-items:center;
+  padding:120px 60px 60px;
+  gap:50px;
+}
+
+.hero-text h1{
+  font-size:3rem;
+  margin-bottom:15px;
+}
+
+.hero-text p{
+  color:var(--muted);
+  max-width:500px;
+}
+
+.hero-img img{
+  width:100%;
+  max-width:400px;
+  border-radius:25px;
+  box-shadow:0 30px 60px rgba(0,0,0,.6);
+}
+
+/* AUDIO SECTION */
+.featured-audio{
+  padding:80px 60px;
+  background:linear-gradient(180deg,#0d0f15,#111521);
+  text-align:center;
+}
+
+.featured-audio h2{
+  margin-bottom:15px;
+}
+
+.featured-audio p{
+  color:var(--muted);
+  margin-bottom:20px;
+}
+
+audio{
+  width:100%;
+  max-width:600px;
+}
+
+/* SECTIONS */
+section{
+  padding:100px 60px;
+  max-width:1100px;
+  margin:auto;
+}
+
+h2{
+  font-size:2rem;
+  margin-bottom:25px;
+}
+
+.card{
+  background:var(--card);
+  padding:30px;
+  border-radius:20px;
+  margin-bottom:20px;
+}
+
+.grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+  gap:20px;
+}
+
+.btn{
+  display:inline-block;
+  padding:14px 28px;
+  background:var(--accent);
+  color:#000;
+  border-radius:30px;
+  font-weight:600;
+  text-decoration:none;
+  transition:.3s;
+}
+.btn:hover{opacity:.85;}
+
+footer{
+  text-align:center;
+  padding:40px;
+  border-top:1px solid #222;
+  color:var(--muted);
+}
+
+/* MOBILE */
+@media(max-width:900px){
+  .hero{
+    grid-template-columns:1fr;
+    text-align:center;
+  }
+  .hero-text p{
+    margin:auto;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<nav>
+  <div class="logo">Joshua Steve</div>
+  <div>
+    <a href="#about">About</a>
+    <a href="#services">Services</a>
+    <a href="#contact">Contact</a>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="hero-text">
+    <h1>Joshua Steve</h1>
+    <p>
+      Audio Engineer specializing in live stereo recordings,
+      vocal clarity and immersive mix enhancement.
+      I transform raw sessions into polished sound.
+    </p>
+  </div>
+
+  <div class="hero-img">
+    <img src="Assets/Image/IMG_4839.jpeg" alt="Joshua Steve">
+  </div>
+</section>
+
+<!-- 🔥 FEATURED AUDIO SECTION -->
+<section class="featured-audio">
+  <h2>Featured Mix Preview</h2>
+  <p>Live worship session – stereo mix enhancement & mastering</p>
+  <audio controls>
+    <source src="Assets/audio/Opening Prayer - Women's Convention 2025.mp3" type="audio/mpeg">
+  </audio>
+</section>
+
+<section id="about">
+  <h2>About Me</h2>
+  <div class="card">
+    <p>
+      I primarily work with live church recordings captured from analog mixers.
+      Because I mix from stereo recordings, I focus heavily on space creation,
+      frequency balance and dynamic control to achieve clarity and cohesion. When it comes to live sound, i'm your sound guy.
+    </p>
+  </div>
+</section>
+
+<section id="services">
+  <h2>What I Do</h2>
+  <div class="grid">
+    <div class="card">
+      <h3>Live Mix Enhancement</h3>
+      <p>Optimizing stereo recordings into powerful, balanced mixes.</p>
+    </div>
+    <div class="card">
+      <h3>Mixing & Mastering</h3>
+      <p>Controlled compression, EQ sculpting and loudness refinement.</p>
+    </div>
+    <div class="card">
+      <h3>Audio Consulting</h3>
+      <p>Helping churches and creators improve sound workflow and clarity.</p>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <h2>Let’s Create Something Powerful</h2>
+  <div class="card">
+    <p>Email: josh6.steve@gmail.com</p>
+    <p>Location: Nigeria • Remote Worldwide</p>
+  </div>
+</section>
+
+<footer>
+  © 2026 Joshua Steve
+</footer>
+
+</body>
+</html>
