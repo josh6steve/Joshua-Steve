@@ -1,4 +1,4 @@
-A sleek, dark-themed portfolio website for Joshua Steve, an audio engineer specializing in live stereo recordings, vocal clarity, and immersive mix enhancement.
+A sleek, dark-themed portfolio website for me, Joshua Steve, an audio engineer specializing in live stereo recordings, vocal clarity, and immersive mix enhancement.
 🎵 About
 This is a static HTML/CSS portfolio website showcasing audio engineering services including:
 Live mix enhancement from stereo recordings
@@ -8,7 +8,6 @@ Audio consulting for churches and creators
 Hosted on GitHub Pages: [https://yourusername.github.io/joshua-steve-audio](https://github.com/josh6steve)
 📁 Project Structure
 plain
-Copy
 joshua-steve-audio/
 ├── index.html          # Main website file
 ├── assets/
