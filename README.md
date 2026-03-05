@@ -5,7 +5,7 @@ Live mix enhancement from stereo recordings
 Professional mixing & mastering
 Audio consulting for churches and creators
 🚀 Live Demo
-Hosted on GitHub Pages: https://yourusername.github.io/joshua-steve-audio
+Hosted on GitHub Pages: [https://yourusername.github.io/joshua-steve-audio](https://github.com/josh6steve)
 📁 Project Structure
 plain
 Copy
