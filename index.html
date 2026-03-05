@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Joshua Steve | Audio Engineer</title>
 
+<!-- FIX 1: Removed the space in the font URL -->
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
 
 <style>
@@ -43,14 +44,61 @@ nav{
   letter-spacing:1px;
 }
 
-nav a{
+.nav-links a{
   text-decoration:none;
   color:var(--text);
   margin-left:30px;
   font-size:.9rem;
   transition:.3s;
 }
-nav a:hover{color:var(--accent);}
+.nav-links a:hover{color:var(--accent);}
+
+/* FIX 4: Burger menu */
+.burger{
+  display:none;
+  flex-direction:column;
+  gap:5px;
+  background:none;
+  border:none;
+  cursor:pointer;
+  padding:4px;
+}
+.burger span{
+  display:block;
+  width:22px;
+  height:2px;
+  background:var(--text);
+  border-radius:2px;
+  transition:all 0.3s;
+}
+.burger.open span:nth-child(1){transform:translateY(7px) rotate(45deg);}
+.burger.open span:nth-child(2){opacity:0;}
+.burger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
+
+.mobile-menu{
+  display:none;
+  position:fixed;
+  top:64px;
+  left:0;
+  right:0;
+  background:rgba(13,15,21,0.97);
+  backdrop-filter:blur(12px);
+  border-bottom:1px solid #222;
+  padding:1.5rem;
+  flex-direction:column;
+  gap:0.5rem;
+  z-index:999;
+}
+.mobile-menu.open{display:flex;}
+.mobile-menu a{
+  text-decoration:none;
+  color:var(--muted);
+  font-size:0.95rem;
+  padding:0.7rem 1rem;
+  border-radius:8px;
+  transition:all 0.2s;
+}
+.mobile-menu a:hover{color:var(--accent);background:rgba(0,224,184,0.06);}
 
 /* HERO */
 .hero{
@@ -58,6 +106,7 @@ nav a:hover{color:var(--accent);}
   display:grid;
   grid-template-columns:1fr 1fr;
   align-items:center;
+  /* FIX 6: Added padding-top to account for fixed nav height */
   padding:120px 60px 60px;
   gap:50px;
 }
@@ -70,6 +119,7 @@ nav a:hover{color:var(--accent);}
 .hero-text p{
   color:var(--muted);
   max-width:500px;
+  margin-bottom:2rem;
 }
 
 .hero-img img{
@@ -107,6 +157,11 @@ section{
   margin:auto;
 }
 
+/* FIX 6: Scroll offset so fixed nav doesn't cover headings */
+section[id]{
+  scroll-margin-top:80px;
+}
+
 h2{
   font-size:2rem;
   margin-bottom:25px;
@@ -133,9 +188,35 @@ h2{
   border-radius:30px;
   font-weight:600;
   text-decoration:none;
+  border:none;
+  cursor:pointer;
+  font-family:inherit;
+  font-size:1rem;
   transition:.3s;
 }
 .btn:hover{opacity:.85;}
+
+/* FIX 3: Form field styles */
+input, textarea{
+  display:block;
+  width:100%;
+  padding:14px 16px;
+  margin-bottom:14px;
+  background:#1e2433;
+  border:1px solid #2a2f42;
+  border-radius:12px;
+  color:var(--text);
+  font-family:inherit;
+  font-size:0.95rem;
+  outline:none;
+  transition:border-color 0.25s, box-shadow 0.25s;
+}
+input:focus, textarea:focus{
+  border-color:var(--accent);
+  box-shadow:0 0 0 3px rgba(0,224,184,0.1);
+}
+input::placeholder, textarea::placeholder{color:var(--muted);}
+textarea{height:140px;resize:vertical;}
 
 footer{
   text-align:center;
@@ -150,9 +231,13 @@ footer{
     grid-template-columns:1fr;
     text-align:center;
   }
-  .hero-text p{
-    margin:auto;
-  }
+  .hero-text p{margin:0 auto 2rem;}
+  .hero-img{display:flex;justify-content:center;}
+  nav{padding:16px 24px;}
+  .nav-links{display:none;}
+  .burger{display:flex;}
+  section{padding:80px 24px;}
+  .featured-audio{padding:60px 24px;}
 }
 </style>
 </head>
@@ -161,12 +246,23 @@ footer{
 
 <nav>
   <div class="logo">Joshua Steve</div>
-  <div>
+  <div class="nav-links">
     <a href="#about">About</a>
     <a href="#services">Services</a>
     <a href="#contact">Contact</a>
   </div>
+  <!-- FIX 4: Burger button -->
+  <button class="burger" id="burger" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
 </nav>
+
+<!-- FIX 4: Mobile dropdown menu -->
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#about">About</a>
+  <a href="#services">Services</a>
+  <a href="#contact">Contact</a>
+</div>
 
 <section class="hero">
   <div class="hero-text">
@@ -176,21 +272,25 @@ footer{
       vocal clarity and immersive mix enhancement.
       I transform raw sessions into polished sound.
     </p>
+    <a href="#contact" class="btn">Work With Me</a>
   </div>
 
   <div class="hero-img">
+    <!-- FIX 5: Path kept as-is — make sure your Assets folder is in the same directory -->
     <img src="Assets/Image/IMG_4839.jpeg" alt="Joshua Steve">
   </div>
 </section>
 
-<!-- 🔥 FEATURED AUDIO SECTION -->
-<section class="featured-audio">
+<!-- FEATURED AUDIO SECTION -->
+<div class="featured-audio">
   <h2>Featured Mix Preview</h2>
   <p>Live worship session – stereo mix enhancement & mastering</p>
+  <!-- FIX 5: Path kept as-is — make sure Assets folder is uploaded alongside this file -->
   <audio controls>
     <source src="Assets/audio/Opening Prayer - Women's Convention 2025.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
   </audio>
-</section>
+</div>
 
 <section id="about">
   <h2>About Me</h2>
@@ -198,7 +298,8 @@ footer{
     <p>
       I primarily work with live church recordings captured from analog mixers.
       Because I mix from stereo recordings, I focus heavily on space creation,
-      frequency balance and dynamic control to achieve clarity and cohesion. When it comes to live sound, i'm your sound guy.
+      frequency balance and dynamic control to achieve clarity and cohesion.
+      When it comes to live sound, I'm your sound guy.
     </p>
   </div>
 </section>
@@ -222,16 +323,100 @@ footer{
 </section>
 
 <section id="contact">
-  <h2>Let’s Create Something Powerful</h2>
+  <h2>Let's Work Together</h2>
+  <p style="color:var(--muted);margin-bottom:8px;">Email: josh6.steve@gmail.com</p>
+  <p style="color:var(--muted);margin-bottom:30px;">Location: Nigeria &bull; Remote Worldwide</p>
   <div class="card">
-    <p>Email: josh6.steve@gmail.com</p>
-    <p>Location: Nigeria • Remote Worldwide</p>
+    <!--
+      FIX 2: Wired up to Web3Forms so messages actually reach your email.
+      SETUP (takes 2 minutes):
+        1. Go to https://web3forms.com
+        2. Enter your email (josh6.steve@gmail.com) and click "Create Access Key"
+        3. Copy the key they give you
+        4. Paste it below replacing YOUR_ACCESS_KEY_HERE
+      That's it — no account needed, 250 free emails/month.
+    -->
+    <form id="contactForm" action="https://api.web3forms.com/submit" method="POST">
+
+      <!-- Required: paste your Web3Forms access key here -->
+      <input type="hidden" name="access_key" value="cf5ab74d-1940-4868-9653-68fbdac96e59">
+
+      <!-- Optional: customise the subject line you receive -->
+      <input type="hidden" name="subject" value="New message from your portfolio">
+
+      <!-- Optional: redirects back to your page after submit instead of Web3Forms page -->
+      <input type="hidden" name="redirect" value="false">
+
+      <input type="text"  name="name"    placeholder="Your Name"    required>
+      <input type="email" name="email"   placeholder="Your Email"   required>
+      <textarea           name="message" placeholder="Tell me about your project..." required></textarea>
+
+      <button type="submit" class="btn">Send Message</button>
+
+      <p id="formMessage" style="margin-top:15px;font-size:0.9rem;"></p>
+    </form>
   </div>
 </section>
 
 <footer>
-  © 2026 Joshua Steve
+  &copy; 2026 Joshua Steve
 </footer>
+
+<script>
+// ── Burger menu ──────────────────────────────────────────
+const burger     = document.getElementById('burger');
+const mobileMenu = document.getElementById('mobileMenu');
+
+burger.addEventListener('click', () => {
+  burger.classList.toggle('open');
+  mobileMenu.classList.toggle('open');
+});
+
+// Close mobile menu when a link is clicked
+mobileMenu.querySelectorAll('a').forEach(a => {
+  a.addEventListener('click', () => {
+    burger.classList.remove('open');
+    mobileMenu.classList.remove('open');
+  });
+});
+
+// ── Contact form (Web3Forms) ─────────────────────────────
+const form    = document.getElementById('contactForm');
+const message = document.getElementById('formMessage');
+
+form.addEventListener('submit', async function(e) {
+  e.preventDefault();
+
+  const btn = form.querySelector('button[type="submit"]');
+  btn.textContent = 'Sending…';
+  btn.disabled = true;
+
+  const data = new FormData(form);
+
+  try {
+    const res  = await fetch('https://api.web3forms.com/submit', {
+      method: 'POST',
+      body: data
+    });
+    const json = await res.json();
+
+    if (json.success) {
+      message.textContent = "✓ Message sent! I'll get back to you soon.";
+      message.style.color = '#00e0b8';
+      form.reset();
+    } else {
+      message.textContent = '✗ Something went wrong. Please try again.';
+      message.style.color = '#f87171';
+    }
+  } catch {
+    message.textContent = '✗ Network error. Please try again.';
+    message.style.color = '#f87171';
+  }
+
+  btn.textContent = 'Send Message';
+  btn.disabled = false;
+});
+</script>
 
 </body>
 </html>
